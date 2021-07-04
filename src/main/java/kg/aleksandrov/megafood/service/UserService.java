@@ -6,4 +6,5 @@ import kg.aleksandrov.megafood.models.entity.User;
 public interface UserService {
 
     UserDto saveUser(UserDto userDto);
+    String findByPhone(UserDto userDto);
 }

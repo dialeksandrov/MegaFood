@@ -10,8 +10,6 @@ import kg.aleksandrov.megafood.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.*;
-
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -37,4 +35,14 @@ public class UserServiceImpl implements UserService {
         user = userRepo.save(user);
         return userMapper.toUserDto(user);
     }
+
+    @Override
+    public String findByPhone(UserDto userDto) {
+        User user = userMapper.toUser(userDto);
+        User chosenUser = userRepo.findByPhone(userDto.getPhone());
+        if (chosenUser.getPhone().equals(userDto.getPhone()))
+        return "ok";
+    }
+
+
 }
